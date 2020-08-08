@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
 	http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-  <display-name>Book Manager</display-name>
+  <display-name>Node Manager</display-name>
 
   <servlet>
     <servlet-name>mvc-dispatcher</servlet-name>
@@ -15,4 +15,5 @@
     <servlet-name>mvc-dispatcher</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
 </web-app>

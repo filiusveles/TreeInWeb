@@ -1,6 +1,8 @@
 package ru.daniels.treeinweb.models;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,15 +11,19 @@ public class Node {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
     private int id;
 
+    @Column(name = "parent")
+    @JsonProperty("parent")
+    private String parentId;
+
     @Column(name="name")
+    @JsonProperty("text")
     private String name;
 
-    @Column(name = "parent")
-    private int parentId;
-
     @Column(name="haschild")
+    @JsonProperty("children")
     private boolean hasChild;
 
     public int getId() {
@@ -28,7 +34,7 @@ public class Node {
         return name;
     }
 
-    public int getParentId() {
+    public String getParentId() {
         return parentId;
     }
 
@@ -36,7 +42,7 @@ public class Node {
         this.name = name;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(String parentId) {
         this.parentId = parentId;
     }
 
@@ -54,6 +60,7 @@ public class Node {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", parentId=" + parentId +
+                ", hasChild=" + hasChild +
                 '}';
     }
 }

@@ -16,7 +16,11 @@ public class NodeServiceImpl implements NodeService {
 
     @Override
     public List<Node> getParent() {
-        return this.dao.getParent();
+        List<Node> parents = this.dao.getParent();
+        for(Node parent: parents){
+            parent.setParentId("#");
+        }
+        return parents;
     }
 
     @Override

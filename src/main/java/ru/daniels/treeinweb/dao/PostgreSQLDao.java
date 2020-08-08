@@ -42,17 +42,13 @@ public class PostgreSQLDao implements Dao {
     @Transactional
     public List<Node> getParent() {
         Session session = sessionFactory.getCurrentSession();
-
         List<Node> parent = session.createQuery("from Node where parentId="+0).list();
-
-        for(Node node: parent) System.out.println("Parent: " + node);
         return parent;
     }
 
     @Override
     @Transactional
     public List<Node> getChildren(int parentID) {
-        System.out.println("Children");
         Session session = sessionFactory.getCurrentSession();
         List<Node> children = session.createQuery("from Node where parentId=" + parentID).list();
 

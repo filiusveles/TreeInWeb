@@ -55,9 +55,6 @@
 
     <!--  Spring Json Converter  -->
 
-    <mvc:message-converters>
-
-    </mvc:message-converters>
 
     <mvc:default-servlet-handler/>
     <mvc:annotation-driven/>
