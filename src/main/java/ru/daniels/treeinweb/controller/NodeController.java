@@ -24,7 +24,6 @@ public class NodeController {
     @GetMapping("/tree/node")
     @ResponseBody
     public List<Node> nodeList(@RequestParam(value = "id") int id){
-        System.out.println("nodeList()");
         if(id == 0)
             return service.getParent();
         else
@@ -35,7 +34,31 @@ public class NodeController {
         return "tree";
     }
 
-    
+
+    @PostMapping(path = "/tree/add")
+    public @ResponseBody int addNode(@RequestBody Node node){
+        return service.addNode(node);
+    }
+
+
+    @DeleteMapping(path = "/tree/delete")
+    public @ResponseBody void deleteNode(@RequestBody Node node){
+        service.deleteNode(node.getId());
+    }
+
+    @PutMapping(path = "/tree/rename")
+    public @ResponseBody void renameNode(@RequestBody Node node){
+        service.updateNode(node);
+    }
+
+    @PutMapping(path = "/tree/update_parent")
+    public @ResponseBody void updateNodeParent(@RequestBody Node node){
+        service.updateNode(node);
+    }
+
+
+
+
 
 
 

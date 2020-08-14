@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name="treenodes")
 public class Node {
     @Id
-    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty("id")
     private int id;
@@ -18,7 +17,7 @@ public class Node {
     @JsonProperty("parent")
     private String parentId;
 
-    @Column(name="name")
+    @Column
     @JsonProperty("text")
     private String name;
 
@@ -28,6 +27,10 @@ public class Node {
 
     public int getId() {
         return id;
+    }
+
+    protected void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

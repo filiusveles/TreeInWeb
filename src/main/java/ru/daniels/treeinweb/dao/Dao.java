@@ -9,12 +9,11 @@ public interface Dao {
 
     public void setSessionFactory(SessionFactory sessionFactory);
 
-    public void addNode(Node node);
+    public int addNode(Node node);
 
     public void updateNode(Node node);
 
     public void deleteNode(int id);
-
 
     public List<Node> getParent();
 

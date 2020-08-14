@@ -13,7 +13,7 @@ public interface NodeService {
 
     public List<Node> getChildren(int parentID);
 
-    public void addNode(Node node);
+    public int addNode(Node node);
 
     public void updateNode(Node node);
 
