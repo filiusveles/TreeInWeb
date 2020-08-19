@@ -3,15 +3,16 @@ package ru.daniels.treeinweb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ru.daniels.treeinweb.models.Node;
 import ru.daniels.treeinweb.services.NodeService;
 
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("/nodes")
 public class NodeController {
+
     private NodeService service;
 
     @Autowired
@@ -20,39 +21,26 @@ public class NodeController {
         this.service = service;
     }
 
-
-    @GetMapping("/tree/node")
+    @GetMapping
     @ResponseBody
     public List<Node> nodeList(@RequestParam(value = "id") int id){
-        if(id == 0)
-            return service.getParent();
-        else
-            return service.getChildren(id);
-    }
-    @GetMapping("/tree")
-    public String site(){
-        return "tree";
+        return service.getListOfNodes(id);
     }
 
 
-    @PostMapping(path = "/tree/add")
-    public @ResponseBody int addNode(@RequestBody Node node){
+    @PostMapping(path = "/add")
+    public int addNode(@RequestBody Node node){
         return service.addNode(node);
     }
 
 
-    @DeleteMapping(path = "/tree/delete")
-    public @ResponseBody void deleteNode(@RequestBody Node node){
+    @DeleteMapping(path = "/delete")
+    public void deleteNode(@RequestBody Node node){
         service.deleteNode(node.getId());
     }
 
-    @PutMapping(path = "/tree/rename")
-    public @ResponseBody void renameNode(@RequestBody Node node){
-        service.updateNode(node);
-    }
-
-    @PutMapping(path = "/tree/update_parent")
-    public @ResponseBody void updateNodeParent(@RequestBody Node node){
+    @PutMapping(path = "/update")
+    public void renameNode(@RequestBody Node node){
         service.updateNode(node);
     }
 
