@@ -19,5 +19,6 @@
     * **Spring MVC** - реализация RESTful сервера на архитектуре MVC
     * **Spring ORM + Hibernate** - работа с БД
     * **Jackson** - работа с JSON данными 
+    * **Tomcat** - сервер приложения
     
     
