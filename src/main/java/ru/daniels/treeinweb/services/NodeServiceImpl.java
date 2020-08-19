@@ -22,7 +22,13 @@ public class NodeServiceImpl implements NodeService {
     public List<Node> getListOfNodes(int id) {
         if(id == 0)
             return dao.getParent();
-        else
+        else{
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
             return dao.getChildren(id);
     }
 
